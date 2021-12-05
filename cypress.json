@@ -1,0 +1,10 @@
+{
+  "reporter": "cypress-mochawesome-reporter",
+  "reporterOptions": {
+    "reportDir": "reports",
+    "charts": true,
+    "embeddedScreenshots": true,
+    "inlineAssets": true
+  },
+  "video": false
+}

@@ -1,0 +1,12 @@
+{
+  "plugins": ["cypress"],
+  "extends": ["plugin:cypress/recommended"],
+  "overrides": [
+    {
+      "files": ["*.spec.js"],
+      "rules": {
+        "jest/valid-expect": 0
+      }
+    }
+  ]
+}

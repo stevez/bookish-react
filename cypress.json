@@ -6,5 +6,7 @@
     "embeddedScreenshots": true,
     "inlineAssets": true
   },
-  "video": false
+  "video": false,
+  "watchForFileChanges": true,
+  "experimentalStudio": true
 }

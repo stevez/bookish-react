@@ -1,3 +1,4 @@
 {
-  "books": [{ "name": "Refactoring", "id": 1 }]
+  "books": [],
+  "reviews": []
 }

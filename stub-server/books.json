@@ -20,5 +20,13 @@
       "id": 4,
       "description": "This book describes how to apply the Acceptance Test Driven Development when developing a Web Application named bookish with React / Redux and other tools in react ecosystem."
     }
+  ],
+  "reviews": [
+    {
+      "name": "Steve",
+      "content": "Excellent work!",
+      "bookId": "1",
+      "id": 1
+    }
   ]
 }

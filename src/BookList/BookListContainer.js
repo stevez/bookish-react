@@ -1,12 +1,13 @@
+import React from 'react'
 import BookList from './BookList'
-import { useEffect, useState, useSelector } from 'react';
+import { useEffect, useState } from 'react';
 import SearchBox from './SearchBox'
 import bookListSelector from '../redux/selectors/selector';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../redux/actions/actions'
 
 const BookListContainer = () => {
-  const [term, setTerm] = useState('');
+  const [term, setTerm] = useState();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,7 +20,7 @@ const BookListContainer = () => {
   }
   const { books, loading, error } = useSelector(bookListSelector)
   return (
-    <>p:
+    <>
       <SearchBox term={term} onSearch={onSearch} />
       <BookList books={books} loading={loading} error={error} />
     </>

@@ -2,7 +2,10 @@ import { applyMiddleware, createStore, compose } from "redux";
 import thunk from 'redux-thunk'
 import reducer from './redux/reducers/reducer'
 
-const initialState = []
+const initialState = {
+  books: [],
+  book: {}
+}
 const middlewares = [thunk]
 
 const composedEnhancers = compose(

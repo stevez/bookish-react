@@ -29,8 +29,8 @@ const BookDetail = ({ book }) => {
           name="content"
           margin="normal"
           variant="outlined"
-          mutiline
-          rowsMax="4"
+          mutiline="true"
+          rowsmax="4"
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />

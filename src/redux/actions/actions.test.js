@@ -75,10 +75,8 @@ describe("BookListContainer related actions", () => {
 
     const store = mockStore({ list: { books: [], term: "" } });
     return store.dispatch(saveReview(1, review)).then(() => {
-      expect(axios.post).toHaveBeenCalledWith(
-        "http://localhost:8080/books/1",
-        review
-      );
+      expect(axios.post.mock.calls[0][0]).toBe("http://localhost:8080/books/1");
+      expect(JSON.parse(axios.post.mock.calls[0][1])).toMatchObject(review);
     });
   });
 });

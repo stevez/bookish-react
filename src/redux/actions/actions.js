@@ -45,7 +45,7 @@ export const saveReview = (id, review) => {
   };
 
   return (dispatch) => {
-    const url = `http://localhost:8080/books/${id}/reviews`;
+    const url = `http://localhost:8080/books/${id}`;
     dispatch({ type: types.SAVE_BOOK_REVIEW_PENDING });
     return axios
       .post(url, JSON.stringify(review), config)

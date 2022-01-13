@@ -57,7 +57,7 @@ describe("BookDetail", () => {
       '[data-test="reviews-container"] .review'
     );
     expect(reviews.length).toBe(1);
-    expect(reviews[0].innerHTML).toEqual("Juntao");
+    expect(reviews[0].querySelector(".name").innerHTML).toEqual("Juntao");
   });
 
   it("renders veview form", () => {

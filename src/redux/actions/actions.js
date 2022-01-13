@@ -45,13 +45,32 @@ export const saveReview = (id, review) => {
   };
 
   return (dispatch) => {
-    const url = `http://localhost:8080/books/${id}`;
+    const url = `http://localhost:8080/books/${id}/reviews`;
     dispatch({ type: types.SAVE_BOOK_REVIEW_PENDING });
     return axios
       .post(url, JSON.stringify(review), config)
       .then((res) => {
         dispatch({ type: types.SAVE_BOOK_REVIEW_SUCCESS, book: res.data });
         dispatch(fetchABook(id));
+      })
+      .catch((error) => {
+        dispatch({ type: types.SAVE_BOOK_REVIEW_FAILED, err: error.message });
+      });
+  };
+};
+
+export const updateReview = (id, review) => {
+  const config = {
+    headers: { "Content-Type": "application/json" },
+  };
+
+  return (dispatch) => {
+    const url = `http://localhost:8080/books/reviews/${id}`;
+    dispatch({ type: types.SAVE_BOOK_REVIEW_PENDING });
+    return axios
+      .put(url, JSON.stringify(review), config)
+      .then((res) => {
+        dispatch({ type: types.SAVE_BOOK_REVIEW_SUCCESS, book: res.data });
       })
       .catch((error) => {
         dispatch({ type: types.SAVE_BOOK_REVIEW_FAILED, err: error.message });

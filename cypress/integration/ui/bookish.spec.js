@@ -49,17 +49,22 @@ describe("Bookish application", () => {
   it("wites a reivew for a book", () => {
     gotoNthBookInTheList(0);
     checkBookDetail("Refactoring");
-    cy.get('input[name="name"]').type("Steve");
-    cy.get('textarea[name="content"]').type("Excellent work!");
-    cy.get('button[name="submit"]').click();
-
-    cy.get('div[data-test="reviews-container"]  .review').should(
-      "have.length",
-      1
-    );
+    composeReview("Steve", "Excellent work!");
+    checkReview();
   });
 });
 
+const checkReview = () => {
+  cy.get('div[data-test="reviews-container"]  .review').should(
+    "have.length",
+    1
+  );
+};
+const composeReview = (name, content) => {
+  cy.get('input[name="name"]').type(name);
+  cy.get('textarea[name="content"]').type(content);
+  cy.get('button[name="submit"]').click();
+};
 const gotoApp = () => {
   cy.visit("http://localhost:3000/");
 };

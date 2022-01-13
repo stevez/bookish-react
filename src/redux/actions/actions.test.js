@@ -2,7 +2,13 @@ import axios from "axios";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 
-import { setSearchTerm, fetchBooks, fetchABook, saveReview } from "./actions";
+import {
+  setSearchTerm,
+  fetchBooks,
+  fetchABook,
+  saveReview,
+  updateReview,
+} from "./actions";
 import * as types from "./types";
 
 const middlewares = [thunk];
@@ -75,8 +81,26 @@ describe("BookListContainer related actions", () => {
 
     const store = mockStore({ list: { books: [], term: "" } });
     return store.dispatch(saveReview(1, review)).then(() => {
-      expect(axios.post.mock.calls[0][0]).toBe("http://localhost:8080/books/1");
+      expect(axios.post.mock.calls[0][0]).toBe(
+        "http://localhost:8080/books/1/reviews"
+      );
       expect(JSON.parse(axios.post.mock.calls[0][1])).toMatchObject(review);
+    });
+  });
+
+  it("Update a review for a book", () => {
+    const review = {
+      name: "Steve",
+      content: "Excellent work!",
+    };
+    axios.put = jest.fn().mockImplementation(() => Promise.resolve({}));
+
+    const store = mockStore({ list: { books: [], term: "" } });
+    return store.dispatch(updateReview(1, review)).then(() => {
+      expect(axios.put.mock.calls[0][0]).toBe(
+        "http://localhost:8080/books/reviews/1"
+      );
+      expect(JSON.parse(axios.put.mock.calls[0][1])).toMatchObject(review);
     });
   });
 });

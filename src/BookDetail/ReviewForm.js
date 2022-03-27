@@ -18,6 +18,7 @@ const ReviewForm = ({ id }) => {
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
+      <br />
       <textarea
         label="Content"
         name="content"
@@ -28,6 +29,7 @@ const ReviewForm = ({ id }) => {
         value={content}
         onChange={(e) => setContent(e.target.value)}
       />
+      <br />
       <Button
         variant="contained"
         color="primary"
